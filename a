@@ -1,0 +1,1355 @@
+
+浏览器	内核 
+IE  	Trident
+Mozilla Gecko
+Chrome  Blink(WebKi的分支)
+Opera 	原为Presto,现在为Blink
+
+.bb{
+	background:#f55555;
+    .background:#f55555\9
+    +backgorund:#a200ff\IE6、7、8	
+    —backgroud:#f55555;\Ie6
+}
+
+IE下可以使用常规方法获取自定义属性亦可以使用getAttribute()获取属性
+Firefox只能使用getAttribute()获取属性
+
+IE 下 even对象有x,y属性但是没有pageX、pageY属性
+Firefox下 event对象有pageX,pageY属性，但是没有x,y属性
+解决方法（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。Chorme中文界面下默认会将小于12px的文本强制按照12px显示
+可通过假如CSS 属性-webkit-text-size-adjust:none;解决.超链接访问过hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的排列顺序
+L-V-O-E a:link{} a:visited{} a:hover{} a:active{}
+
+hml5有哪些新特性、溢出了哪些元素，如何处理HTML5新标签的浏览器倩蓉问题？如何区分HTML 和HTML5
+ HTML5已经不是SGML的子集 主要是关于图像、位置、存储、多任务等功能的增加
+ 绘画 canvas
+ 用于媒介回访的 video 和audio 元素
+ 本地离线存储localSorage长期存储数据，浏览器关闭后数据不丢失，sessionStorage的数据在浏览器关闭后自动删除
+
+ 语义化更好的内容元素，比如 article、footer、header、nav、section
+ 表单控件, calendar、date、time、email、url、search
+
+ 新的技术 webworker websocket Geolocation
+
+移除的元素
+	纯表现的元素:basefont,big,center,font,s,strike,tt,u
+	对可用性产生负面影响的元素:frame,frameset,noframes
+	支持HTML5新标签 
+
+IE8/IE7/IE6支持通过document createElement方法产生的标签
+可以利用这一特性让这些浏览器支持HTML5新标签
+
+当然最好的方式是直接使用成熟的框架、使用最多的是html5shim框架
+<!-[if it IE 9]>
+<script> src="http:?html5shim.googlecode.com/svn/trunk/html5.js"
+<![endif]=>
+
+如何区分:DOCTYPE声明\新增的结构元素\功能元素
+
+语义化的了解
+	*用正确的标签做正确的事情
+	*html语义化就是让页面的内容结构化，便于对浏览器、搜索引擎解析
+	*在没有样式css情况下也以一种文档格式显示，并且是容易阅读的
+	搜索引擎的爬虫一来标记来确定上下文和各个关键字的权重，利于SEO
+	使阅读代码的人对网站容易将网站分块，便于阅读维护理解
+
+HTML5的离线存储?
+	localStorage 长期存储数据，浏览器关闭数据不丢失
+	secctionStorage 数据在浏览器关闭后自动删除
+
+描述一段语义的html代码吧
+	<div id="header">
+	<h1>标题</h1>
+	<h2>专注web前端技术</h3>
+	</div>
+
+iframe 有哪些缺点
+	iframe 会阻塞主页面的Onload时间
+	iframe和主页面共享连接池，而浏览器对相同域对相同域的连接有限制，所以会影响页面的并行加载
+	使用iframe之前需要考虑两个缺点
+	最好用javascript使用iframe
+	动态给iframe 添加src属性值,这样可以绕开这两个问题
+
+HTML5的form 如何关闭自动完成功能
+ 给不想要提示的form或下某个input 数值为 autocomplete=off
+
+cookies,sessionStorage和localStorage的区别
+cookie 在浏览器和服务间来回船体。sessionStorage和localStorage不会
+
+secctionSotrage和localStorage的存储空间更大
+
+sessionStorage 和localStorage有更多丰富可用的接口
+
+sessionStorage和localStorage各自独立的存储控件
+
+如何实现浏览器内多个标签页之间的通信(阿里)
+
+webSockset如何兼容低浏览器(阿里)
+
+Adobe flash socket 、 ActiveX HTMLFILE(IE) 基于multipart编码发送XHR 基于长轮询的XHR
+
+简绍下CSS的盒子模型
+	(1)有两种:IE盒子模型、标准W3C盒子模型：IE的content部分包含了border 和padding
+	(2)盒模型:内容(content)、填充(padding)、边界(margin) 、边框(border)
+
+CSS 选择符有哪些？那些属性可以继承？优先级算法如何计算？CSS3新增伪类有哪些
+1.id选择器(#myid)
+2.类选择器(.myClassname)
+3.标签选择器(div,h1,p)
+4.相邻选择器(h1+p)
+5.子选择器(ul>li)
+6.后代选择器(li a)
+7.通配符选择器(*)
+8.属性选择器(a[rel="external"])
+9.伪类选择器(a:hover,li:nth-child)
+可继承的样式:font-size font-family color,Ul LI  DL DD DT
+不可继承样式 border padding margin  width height 
+优先级原则,同权重定义最近者为准
+载入样式以最后载入的为准
+!important >id >class>tag
+important 比 内联优先级高
+
+Css3新增伪类距离
+p:first-of-type  选择属于父元素的首个P的每个<p>元素
+p:last-of-type 选择属于其父元素的最后<p>元素的每个<p>元素
+p:only-of-type 选择属于其父元素唯一的<p>元素的每个<p>元素
+p:only-child
+选择属于其父元素的唯一子元素的每个<p>元素
+P:nth-child(2)选择其父元素的第二个子元素的每个<p>元素
+P:nth-of-type(2)选择其父元素的子元素p标签的第二个元素
+:enabled :disabled 控制表单控件的禁用状态
+:checked 单选框或复选框被选中
+
+如何居中div?居中一个浮动元素
+给div设置一个宽度，然后添加margin:0 auto 属性
+div{width200px margin:0 auto}
+
+居中一个浮动元素
+确定容器的高300宽500
+设置外边距
+.div{
+	width:500px;height:300px;
+	margin:-150x 0 0 -250px;
+	position:relative;
+	backgorund-color:red;
+	lef:50%;
+	top:50%;
+
+}
+
+display 作用 position的值,relative和absolute定位原点是
+
+1.block像块类型元素一样显示
+ 	none缺省值。像行内元素一样显示
+ 	inline-block 像行内元素一样显示，但其内容像块类型元素一样显示
+ 	list-item 像块类型元素一样显示，并添加样式列表标记
+ 2.absolute
+ 	生成绝对定位元素相对于static定位以外的第一个父元素定位
+ 	fixed 
+ 		生成绝对定位元素，相对于浏览器窗口进行丁文
+ 	relative
+ 		生成相对定位的元素，相对于其正常位置进行定位
+ static 默认值 没有定位 元素出现在正常的流中
+ *(忽略top bottom left right z-index 生命)
+
+ inherit规定从父元素继承position属性的值
+
+
+CSS3有哪些新特性
+ CSS3实现圆角 border-radius 阴影box-shadow
+ 对文字加特效(text-shadow)
+ 线性渐变(gradient)
+ 旋转(ransform)
+transform:rotate(0deg) scale(0.85,0.90) translate skew 旋转缩放定位倾斜
+增加了更多css选择器多背景rgba
+
+一个满屏 品 字布局 如何设计
+经常遇到的CSS的兼容性有哪些？原因，解决方法是什么
+为什么要初始化CSS样式
+ 因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果不初始化CSS往往会出现浏览器之间的显示差异
+初始化样式会对SEO有一定影响，力求影响最小的情况下初始化
+淘宝的样式初始化：
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
+h1, h2, h3, h4, h5, h6{ font-size:100%; }
+address, cite, dfn, em, var { font-style:normal; }
+code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
+small{ font-size:12px; }
+ul, ol { list-style:none; }
+a{ text-decoration:none; }
+a:hover { text-decoration:underline; }
+sup { vertical-align:text-top; }
+sub{ vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset, img { border:0; }
+button, input, select, textarea { font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
+
+absoluted的containing block 计算方式和正常流有什么不同？
+position跟 display、margin collapse 、overflow、float这些特性相互叠加后会怎么样
+
+对BFC规范的理解
+	W3C CSS2.1规范中的一个概念，它觉得了元素如何对内容进行定位，以及与其他元素的关系和相互作用
+
+Css定义的权重
+	权重的规则 标签的权重为1 class的权重为10 id的权重为100
+	如果权重相同，最后定义的样式会起作用
+
+解释下浮动和它的工作原理？清除浮动的技巧
+
+@media screen 
+
+使用css预处理器吗喜欢哪个
+LESS 它扩展了CSS语言，增加了变量、Mixin、函数等特性
+
+如果需要手动写动画，你认为最小时间间隔是多久，为什么？
+	多数显示器默认频率是60HZ，即1秒刷新60次，所以理论上最小间隔为1/60*1000ms =16.7ms
+
+display:inline-block 什么时候会显示间隔
+ 	溢出空格，使用margin负值、使用font-size:0、letter-spacing：word-spacing
+
+
+JavaScript
+
+javascript原型、原型链？有什么特点？
+
+每个对象都会在其内部初始化一个属性，就是prototype(原型)，当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么他就会prototype里找这个属性，这个prototype又会有自己的prototype,于是就这样一直找下去，也就是我们平时所说的原型链的概念。
+关系:instance.constructor.prototype=instance._proto_
+
+特点:
+	JavaScript对象是通过引用来传递的，我们创造的每个新对象实例中并没有一份属于自己的原型副本。当我们修改原型，与之相关的对象也会继承这一改变
+
+当我们需要一个属性的时，javascript引擎会先看当前对象中是否这个属性，如果没有的话，就会查找她的Prototype对象是否有这个属性，如此滴翠下去，一直检索到Object内建对象。
+function Func(){}
+	Func.prototype.name="Seacmm"
+	Func.prototype.getInfo=function(){
+		return this.name;
+	}
+	var person =new Func() //var person =Object.create(oldObject)
+	console.log(Func.prototype)
+
+	console.log(Func.prototype)
+	//Func {name="Sean",getInfo=function()}
+
+
+说几条写javascript的基本规范
+1.不要在同一行生命多个变量
+2.请使用 ===/!==来比较 true/false或者数值
+3.使用对象字面量替代 new Array这种形式
+4.不要使用全局函数
+5.Switch 语句必须带有default 分支
+6.函数不应该有时候有返回值，有时候没有返回值。
+7.For循环必须使用大括号
+8.If语句必须使用大括号
+9.for-in循环中的变量 应该使用var关键字明确限定作用域，从而避免作用域污染
+undefined typeOf undefined  null typeOf null
+eval 是做什么的
+	它的功能是把对应的字符串解析成JS代码并运行
+	应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行).
+
+null,ubdefined的区别
+undefined表示变量声明但未初始化时的值，
+null表示准备用来保存对象，还没有真正保存对象的值。从逻辑角度看，null值表示一个空对象指针。
+JavaScript（ECMAScript标准）里共有5种基本类型：Undefined, Null, Boolean, Number, String，和一种复杂类型Object。可以看到null和undefined分属不同的类型，未初始化定义的值用typeof检测出来是"undefined"(字符串)，而null值用typeof检测出来是"object"（字符串）。
+
+任何时候都不建议显式的设置一个变量为undefined，但是如果保存对象的变量还没有真正保存对象，应该设置成null。
+
+实际上，undefined值是派生自null值的，ECMAScript标准规定对二者进行相等性测试要返回true，即 
+
+1
+alert(null==undefined);  // true
+var protoChain = [];    
+		 while (object = object.__proto__) {      protoChain.push(object); 
+		 }     
+		 protoChain.push(null);     
+		 return protoChain; 
+		} 
+		console.log(getPrototypeChain(new String("")))
+		function Foo() {}  for (var i = 0; i < 100; i++) {     Foo.prototype["foo" + i] = i;     Foo.prototype = new Foo; } 
+		console.dir(getPrototypeChain(new Foo));
+	</script>
+
+写一个通用的事件侦听器函数
+markyun.Event={
+	readyEvent :function(fn){
+		if(fn==null){
+			fn=document
+		}
+		var oldonload=window.onload;
+		if(typeof window.onload !='function'){
+			window.onload=fn
+		}else{
+
+			window.onload=function(){
+				oldonload()
+				fn();
+			};
+		}
+	}}
+
+dom0||dom2||IE方式 来绑定是一件
+参数： 操作的元素，事件名称，事件处理程序
+
+addEvent : function(element,type,handler){
+	if(element.addEventListener){
+	element.addEventListener(type,handler,false);
+	}else if(element.attachEvent){
+	element.attachEvent('on'+type,function(){
+	handler.call(element)
+	})
+	}else{
+	element['on'+type]=handler
+	}
+}
+removeEvent:function(element,type,handler){
+	if(elment.removeEventListener){
+		element.removeEventListener(type,handler,false);
+	}else if(elemnt.datachEvent){
+		element.detachEvent('on'+type)
+	}else{
+	element['on'+type]=null;
+	}
+}
+阻止冒泡事件
+stopPropagation:function(ev){
+	if(ev.stopPropagation){
+	ev.stopPropagation();
+	}else{
+	ev.cancelBubble=true;
+	}
+}
+取消事件的默认行为
+preventDefault:function(event){
+	if(event.preventDefalut){
+		event.preventDefault()
+	}else{
+		event.returnValue=false
+	}
+	return false
+}
+//获取事件目标
+
+getTarget: function(event){
+	return event.target||event.srcElement
+}
+getEvent :function(e){
+	var ev=e||window.event;
+	if(!ev){
+	var c= this.getEvent.caller
+	while(c){
+	ev =c.arguments[0]
+	if(ev&&Event==ev.constructor){
+		break;
+	}
+	c=c.caller
+	}
+	}
+	return ev;}
+}
+
+
+Node.js的适用场景？
+高并发、聊天、实时小心推送 IO密集
+
+javscript 如何实现继承
+	通过该原型和构造器
+
+["1","2","3"].map(parseInt)的答案是多少
+[1,NaN,NaN]因为parseInt需要两个参数(val,radix),其中radix表示解析用的基数 0按10进制处理 小于2返回NaN
+另外2进制里面没有 3这个数字，所以也返回NAN
+
+如何创建一个对象？画出此对象的内存图
+
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+	this.sing=function(){
+	alert(this.name)
+	}
+}
+
+谈谈This对象的理解。
+	this 是js的一个关键字，随着函数使用场合不同，this的值会发生变化
+	有一个总原则，this指的是调用函数的那个对象
+	this一般情况下是全局对象Global作为方法调用，那么this.就是指这个对象
+
+事件是什么？IE与火狐的事件机制有什么区别？如何阻止冒泡
+我们在网页中的某个操作(有的操作对应多个事件)。例如:当我们点击一个按钮就会产生一个时间，是可以被javaScript侦测到的行为
+2.事件处理机制:IE是事件冒泡、firefox同时支持两种事件模型，也就是捕获型事件和冒泡型事件
+stopProgation() Ie的方法cancelBubble=ture
+什么是闭包(closure),为什么要用它
+	执行bibao()后，bibao闭包内部变量会存在，而闭包内部函数的内部变量不会存在,使得Javascript的垃圾回收机制GC不会收回bibao所占用的资源，因为bibao()的内部函数的执行需要依赖bibao的变量。这是对闭包作用非常直白的描述
+
+	function bibao(){
+	var num =666
+	var sarAlert=function(){
+	alert(num)
+	}
+	num++
+	return sayAlert
+	}
+
+"use strict" 是什么意思？使用它的好处和坏处是什么？
+ES5 引入的
+ECMAscript 5添加了第二种运行模式："严格模式"（strict mode）。顾名思义，这种模式使得Javascript在更严格的条件下运行。
+
+设立"严格模式"的目的，主要有以下几个：
+
+1. 消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+
+2. 消除代码运行的一些不安全之处，保证代码运行的安全；
+
+3. 提高编译器效率，增加运行速度；
+
+4. 为未来新版本的Javascript做好铺垫。
+
+注：经过测试 IE6,7,8,9 均不支持严格模式。
+
+缺点：
+
+现在网站的 JS 都会进行压缩，一些文件用了严格模式，而另一些没有。这时这些本来是严格模式的文件，被 merge 后，这个串就到了文件的中间，不仅没有指示严格模式，反而在压缩后浪费了字节。
+
+如何判断一个对象是否属于某个类
+使用instanceof
+if(a instanceof Person){
+	alert('yes')
+}
+
+new操作符具体干了什么呢
+ 1、创建一个空对象，并且this变量引用该对象，同时还继承了该函数的原型
+ 2.属性和方法被加入到this引用的对象中
+ 3.新创建的对象由this所引用，并且最后隐式的返回this
+
+ var obj ={}
+ obj.__proto__=Base.prototype
+ Base.call(obj)
+
+ javscript 有一个函数，执行对象查找时，永远不会去查找原型，这个函数是？
+ for(i in object){}有原型
+object.hasOwnProperty( propertyName )如果是本身的属性返回true
+
+JSON的了解
+	JSON是一种轻量级数据交换格式
+	她是基于javascript的一个自己。数据格式简单，易于读写，
+	{"age":"12","name":"back"}本质是一个javascript对象
+
+	JSON字符串转换为JSON对象
+	var obj=eval('('+str+')')
+	var obj=str.parseJSON();
+	var obj=JSON.parse(str)
+	JSON对象转化为JSON字符串
+	var last=obj.toJSONString()
+	var last=JSON.stringify(obj)
+js延迟加载的方式有哪些
+	defer 和async、动态创建DOM方式(用得最多)、按需异步载入js
+
+
+ajax是什么？
+	 AJAX，“异步javascript和XML”的缩写，是一组技术的总和。AJAX利用通信技术（以SOAP和XML为代表）向 服务器发送和接收异步请求/响应，然后再权衡表述技术（javascript，DOM，HTML，和CSS）来处理响应
+
+同步和异步的区别
+	同步会阻塞进程，异步不会
+	同步的概念应该是来自于OS中关于同步的概念:不同进程为协同完成某项工作而在先后次序上调整(通过阻塞,唤醒等方式).同步强调的是顺序性.谁先谁后.异步则不存在这种顺序性.
+
+同步：浏览器访问服务器请求，用户看得到页面刷新，重新发请求,等请求完，页面刷新，新内容出现，用户看到新内容,进行下一步操作。
+
+异步：浏览器访问服务器请求，用户正常操作，浏览器后端进行请求。等请求完，页面不刷新，新内容也会出现，用户看到新内容。
+如何解决跨域
+	jsonp、iframe、window.name、window.postMessage 服务器 设置代理页面
+
+模块化怎么做
+	[立即执行函数，不暴露使用成员]
+	var module1=(function(){
+		var _count=0;
+		var m1=function(){
+
+		}
+		var m2=function(){
+
+		}
+		return{
+			m1:m1,
+			m2:m2
+		}
+	})()
+
+AMD(Modules/Asynchronous-Definition)、CMD(Common Module Definition)规范区别？
+
+AMD异步模块定义所有的的模块将被异步加载，模块加载不影响后面语句执行。所有一来某些模块均放置在回调函数中
+
+区别：
+	1.对于依赖的模块，AMD 是提前执行，CMD是延迟执行。不过REQUIREJS从2.0开始，也可以延迟执行。CMD推崇as lazy aspossible 懒加载
+	2.CMD 退从依赖就近，AMD推崇依赖前置
+
+//CMD
+define(function(require,exports,module){
+	var a=require('./a')
+	a.doSomething()
+	var b=require('./b')
+	b.doSomething()
+})
+//AMD 默认推荐 依赖必须一开始写好
+defime(['./a','./b'],function(a,b){
+	a.doSomething()
+
+	b.doSomething()
+})
+
+异步加载的方式有哪些
+1.defer只支持IE
+2.async
+3创建script 插入到DOM中，加载完毕后callback
+
+document.write 和innerHTML的区别
+document.write只能重回整个页面
+innerHTML可以重回页面的一部分
+
+call()和apply的区别
+
+都是改变this的指向，不同的是apply接受数组
+
+JQuery与JQuery UI有啥区别
+JQuery是一个js库，主要提供的功能是选择器，属性修改和时间绑定等
+
+JQUERY UI则是在JQUERY的基础上，利用JQUERY的扩展性，设计的插件
+提供了一些常用的界面元素 诸如对话框 拖动行为、改变大小行为等等
+
+JQUERY的源码看过吗？能不能简单说一下它的实现原理
+
+JQuery对象的[0]属性其实就是原生的DOM对象然后扩展加了乙烯利简单代码
+(function(window,undefined){
+	var JQuery={
+	isReady:false, //文档时否加载完成的标志
+	readyList[], //函数序列
+	//onload事件实现
+	ready:function(fn){
+		if(fn&&type of fn=='function'){
+		jQuery.readyList.push(fn);
+		}
+		//文档加载完成，执行函数序列
+		if(jQuery.isReady){
+		for(var i=0;i<jQuery.readyList.length;i++){
+			fn =jQuery.readyList[i]
+			jQuery.callback(fn)
+		}
+		return jQuery
+		}
+	},
+	callback:function(fn){
+		fn.call(document,jQuery)
+	}
+	};
+
+	window.$=window.JQuery=jQuery
+	var top =false
+	try{
+	top =window.frameElement==null&&document.documentElement
+	}catch(e){}
+	if(top&&top.doScroll){
+	(function doScrollCheck(){
+		try{
+		top.doScroll('left');
+		jQuery.isReady=true
+		jQuery.ready()
+		}catch(e){
+			setTimeout(doScrollCheck,50)
+		}
+	})()
+	}
+}(window))
+
+JQuery中如何转化为json字符串，然后再转化回来？
+jQuery中没有提供这个对象，所以你需要写两个jQuery的扩展
+$.fn.stringifyArray=function(arr){
+	return JSON.stringify(arr)
+}
+$.fn.parseArray=function(arr){
+	return JSON.parse(arr)
+}
+
+针对JQuery的优化方法
+基于Class的选择性的性能相对于Id选择器的开销很大，因为需遍历所有的DOM元素
+频繁操作的DOM，先缓存起来再操作，用jQuery的练市调用更好
+
+*for(var i=size;i<arr.length;i++)
+改为for(var i=size,length=arr.length;i<length;i++){}
+
+哪些操作会造成内存泄漏
+内存泄漏指任何对象在您不再拥有或需要它之后仍然存在
+垃圾回收期定期扫描对象，并计算引用了每个对象的其他对象的数量。如果一个对象的引用数量为0（没有其他对象引用过改对象），或对象的唯一引用是循环，那么该对象的内存即可回收
+setTimeout 的第一个参数使用字符串而非函数时，会引发内存泄漏
+闭包、控制台日志、循环（两个对象彼此引用并保留时，就会产生循环）
+如何判断当前脚本运行在浏览器还是node环境中
+判断 Global对象是否为window如果不为window,则没有运行在浏览器中
+
+对Node的区有点和缺点
+Node是基于事件驱动和无阻塞的，非常适合处理并发请求，此外，与Node代理服务器交互的客户端代码是由javascript语言写的，客户端和服务端都用同一种语言编写，是非常美妙的事情
+
+Node是一个相对新的开源下昂慕，缺少足够多的第三方库支持
+
+您有哪些性能优化的方法
+1.减少http请求
+2.前端模板 js+数据 减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
+3.用innerHTML代替DOM操作，减少DOM操作次数
+4.需要设置样式时设置classname而不是直接操作style
+5.少用全局变量，缓存DOM节点操作结果
+6.避免使用CSS expression //可以用表达式表示css ie5开始ie8取消
+
+7.图片预加载，将样式表放在顶部，将脚本放在底部，加上时间时间错
+
+8.避免主题使用table，完全下载之后才会显示出来，显示比div+css布局蛮
+	对普通的网站有一个统一的思路，就是尽量向前端优化，减少数据库操作，减少磁盘IO，向前端优化指的是，在不影功能和体验的情况下，能在浏览器执行的不要子啊服务端执行，能在缓存服务器上直接返回的不要到应用服务器，程序能直接取得的结果不要到外部取得，本机能取得的不要远程取，内存能取得的不要到磁盘取，缓存有的不要去数据库查询，减少数据库指减少更新次数，缓存结果减少查询次数，将数据库执行的操作尽可能的让你的程序完成，减少磁盘IO指精良不适用文件系统作为缓存，减少读写文件次数等，程序优化永远要优化慢的部分，换语言是无法"优化的"
+
+http状态码有哪些？分别代表什么意思
+100~199 指客户端相应的某些动作
+200~299 表示请求成功
+300~399 用于一静一动的文件并且包含在定位头信息中指定新的地址信息
+400~499  用于之处客户端的错误 
+400 语义有误，当前请求无法被服务器理解
+401 当前请求需要用户验证
+403 服务器已经理解请求，但是拒绝执行它
+500~599 表示服务器错误 503 服务器不可用
+
+一个页面从输入URL到页面加载显示完成，这个过程中发生了什么？
+	查找浏览器缓存
+	DNS解析、查找域名对应的IP地址、重定向（301）就是说如果换了新地址等可以设置这个自动转到新站点、发出第二个GET请求
+
+	进行HTTP协议会话
+	客户端发送报头（请求报头）
+	服务器回馈报头(相应报头)
+	html 文档开始下载
+	文档树建立，根据标记请求所需指定MIME类型的文件
+	文档显示
+	浏览器这边做的工作大致分为以下几步：
+	加载：根据请求的URL进行域名解析，向服务器发起请求，接收文件(HTML、JS、CSS)
+
+对前端界面工程师这个职位是怎么样理解的？它的前景会怎么样
+前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近
+1、实现界面交互
+2、提升用户体验
+3、有了Node.js前端可以实现服务端的一些事情
+
+前端是最贴近用户的程序员，前端的能力最能让产品90金华到100分甚至更好，参与项目，快速高质量完成设计图，精确到1px;
+与团队成员，UI设计，产品经理的沟通
+做好的页面结构，页面冲哥和用户体验
+处理hack、兼容、写出有没的代码格式
+针对服务器的优化、拥抱最新前端技术
+
+加班的看法？
+	加班就像借钱，原则应当是 ----救急不救穷
+
+平时如何管理你的想目？
+先期团队必须去定好全局样式(globe.css),编码模式(utf-8)等
+编写习惯必须一致(例如是采用集成式写法，单样式都写成一行)
+标注样式编写人，各模块都及时标注
+页面进行标注
+css 跟HTML分文件夹并行存放，命名都得统一
+js分文件夹存放，以js功能为准的英文翻译
+图片采用整合的 images.png png8格式文件使用 尽量整合在一起使用方便将来的管理
+
+说说最流行的一些东西吧？常去哪些网站
+Node.js、Mongodb、npm、MVVM、MEAN、three.js
+
+移动端(Android IOS)怎么样做好用户体验
+气息的视觉纵横、信息的分组、极致的减法
+利用选择代替输入，标签及文字的排布方式
+依靠明文确认密码、合理的键盘利用
+
+
+
+html
+IE  	trident内核
+Firefox gecko内核
+Safari	webkit内核
+Opera	presto内核,现改为Blink
+Chrome 	Blink(基于webkit)
+2.HTML文件里开哦图有个很重要的东西Doctype,知道这个是干什么的吗
+ 告诉浏览器按照何种规范进行解析页面
+
+ Quirks模式是什么？它和Standards模式有什么区别
+从IE6开始，引入了Standards模式，标准模式中，浏览器尝试给符合标准的文档在规范上正确处理达到指定浏览器的程度
+
+在IE6之前CSS还不够成熟，所以IE5等之前的浏览器对CSS的支持很差，IE6将对CSS提供更好的支持，然而这时的问题就来了，因为有很多页面是基于旧的布局方式写的，而如果IE6支持CSS则将令这些页面显示不正常，如何在既保证不破坏现有页面，又提供新的渲染机制呢？
+	在写程序时我们也会经常遇到这样的问题，如何保证原来的接口不变。又提供更强大的功能，尤其是新功能不兼容旧功能时。遇到这种问题时的一个常见做法是增加参数和分支，即当某个参数为真时，我们就使用新功能，而如果这个参数不为真时，就使用旧功能，这样能不破坏原有的程序，又提供新功能，IE6也是类似这样做的，它将当DTD当成了这个"参数",因为以前的有河面大家都不会写DTD，所以IE6就假定，如果写了DTD，就意味着这个页面将采用对CSS支持更好的布局，而如果没有，则采用兼容之前的布局方式，这就是Quirks(怪癖模式，诡异模式，怪异模式)
+
+	区别：
+	总体会有布局、样式解析和脚本执行三个方面的区别
+		盒模型：在W3C 内容宽度高度不包括padding和border
+		而在Quirks模式下，IE的宽度和高度还包含了padding 和 bording 
+		s设置行内的高度，在standards模式下，给<span>等行内元素设置width和height都不会生效，而在quirks模式下，则会生效
+
+div +css 布局较table布局有什么优点
+改版时候更方便，只要改css文件
+页面加载速度更快，结构化清晰，页面显示简洁
+表现与结构相分离
+易于优化(seo)搜索引擎更友好，排名更容易靠前、
+
+a:img 的 alt 与title有和异同?b:strong 与em 的区别
+
+alt:为不能显示图像、窗体或applets的用户代理(UA),lat属性用来指定替换文字。替换文字由lang属性指定(Ie下会在没有title时把alt当成tool tip 显示)
+title(tool tip):该属性为设置该属性的元素提供建议性的信息
+strong 粗体强调标签，强调内容的重要性
+em 斜体强调标签，表示内容的强调点
+
+6.您能描述下渐进增强和优雅降级之前的不同吗
+
+渐进增强 progressive enhancement:针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验
+
+优雅降级 gracefuldegradation:一开始就构建完整的功能，然后再针对低版本浏览器进行兼容
+
+区别：优雅降级是从复杂的现状开始，并试图减少用户体验到的供给，而渐进增强是从一个非常基础的，能够起作用的版本开始，并不断扩充，以适应未来环境的需要。降级(功能衰减)意味着往回看，而渐进增强则意味着朝前看，同时保证其根基处于安全地带
+
+优雅降级观点
+	"优雅降级"观点认为应该针对那些最高级，最完善的浏览器来设计网站。并把测试对象限定为主流浏览器(IE、Mozilla)的前一个爸爸
+
+	在这种设计范例下，就搬的浏览器被认为仅能提供"简陋却无妨"的浏览器体验，你可以做一些小的调整来是营某个特定浏览器。但由于他们并非是我们关注的焦点，因此除了修复较大的错误外，其他的差异将被直接忽略
+
+渐进增强观点
+	渐进增强观点则认为应关注内容本身
+	内容是我们建立网站的诱因，有的网站展示它，有的则收集它，有的寻求，有的操作，还有的王国站甚至会包含以上的种种，单相同点是它们全部涉及到内容，会使得"渐进增强"成为一种更为合理的而设计范例。这也是立即被Yahoo!所采纳并用以构建其"分级式浏览器支持"测量的原因所在
+
+
+　那么问题了。现在产品经理看到IE6,7,8网页效果相对高版本现代浏览器少了很多圆角，阴影（CSS3），要求兼容（使用图片背景，放弃CSS3），你会如何说服他？
+
+7.为什么利用多个域名来存储网站资源会更有效
+CDN缓存更方便
+突破浏览器并发限制
+节约cookie带宽
+节约主域名的连接数，优化页面相应速度
+防止不必要的安全问题
+
+
+8.请谈一下你对网页标准和标准制定机构重要性的理解
+
+网页标准和标准定制机构是为了能让web发展更健康，开发者遵循统一的标准，降低开发难度，开发成本，seo也会更好做，也不会应为滥用代码导致各种BUG、安全问题，最终提高网站易用性
+
+请描述一下cookies,sessionStorage和localStorage
+sessionStorage用于本地存储的一个会话(session)中的数据，这些数据只有同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。而localStorage用于持久化的本地存储，除非主动删除数据，否则数据不会过期
+
+web storage和cookie的区别
+web storage的概念和cookie相似，区别是它是为了更大容量存储设计的。Cookie的大小是受限的，并且每次你请求一个新的页面Cookie都会被发送过去，这样无形中浪费了贷款，另外cookie还需要指定作用域，不可以跨域调用。
+初次以外，web Storage拥有setItem,getItem,removeItem,clear等方法，不想cookie需要前端开发者自己封装setCOkkie,getCookie。 
+sessionStorage.setItem(css,classname)
+sessionStorage.getItem(classname)
+
+sessionStorage.removeItem(classname)
+sessionStorage.clear()
+localStorage.setItem(css,classname)
+localStorage.getItem(classname)
+
+简述下src 和href 的区别
+src  用于替换当前元素，href用于在当前文档和引用资源之间确定联系
+src 是source的缩写，只想外部资源的位置，指向的内容将会嵌入到文档中当前标签所在位置：在请求src资源时会将其指向的资源下载并应用到文档中，例如js脚本，img图片和frame灯元素
+<script src="js.js"></script>
+当浏览器解析到该元素时，会暂停其他资源的下载和处理，知道将该资源加载、编译、执行完毕，图片和框架等元素也如此，类似于将所指资源嵌入当前标签内。这也是为什么将js脚本放在底部而不是头部
+href 是Hypertext Reference的缩写，指向网络资源的所在位置，建立和当前元素(锚点)或当前文档(链接)之间的连接，如果我们在文档中添加
+<link href="common.css" rel="stylesheet"/>
+那么浏览器会识别该文档为css文件，就会并行下载资源并且不会停止当前文档的助理。这也是为什么建议link方式来加载CSS二部是用@import方式
+
+知道的网页制作会用的的图片的格式有哪些
+
+png-8 png-24 jpeg gif svg
+webp Apng
+WebP格式 谷歌开发一种旨在加快图片加载速度的图片格式图片。图片压缩体积大概只有jpeg 2/3并能节省大量的服务器带宽资源和数据空间。Facebook Ebay等知名网站已经开始测试并使用WebP格式
+在质量相同的情况下，WebP格式图像的体积比JPEG格式图像小40%
+
+Apng:全称是 "Animated Portable Network Graphics",是PNG的位图动画扩展，可以实现png格式的动态图片效果。04年诞生，单一直得不到各大浏览器厂商的支持，直到日前得到IOS safari 8 的支持，有望代替GIF成为下一代动态图标准
+
+知道什么是微格式吗？谈谈理解。在前端构建中应该考虑微格式吗
+
+微格式是一种让机器可读的语义化XHTML词汇的集合，是结构化数据的开放标准。是为特殊应用而制定的特殊格式
+
+优点:将只能数据添加到网页上，让网站内容在搜索引擎结果界面可以显示额外的提示
+
+13.在css/js代码上线之后开发人员经常会优化性能,从用户刷新网页开始，一次js请求一般情况下有哪些地方会有缓存处理
+dns缓存、cdn缓存、浏览器缓存、服务器缓存
+
+14.一个页面上有大量的图片(大型电商网站)，加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验
+图片懒加载，在页面上的未可视区域可以添加一个滚动条事件，判断图片位置与浏览器顶端的距离与页面的距离，如果签章小于后者，优先加载
+如果为幻灯片、相册等，可以使用图片预加载技术，将当前展示图片的前一张和后一张优先下载
+如果图片为css图片，可以使用CCSSsprite,SVGsprite,Iconfont、Base64等技术
+
+如果图片过大，可以用特殊编码的图片，加载时会先加载一张压缩特别厉害的缩略图，以提高用户体验
+如果图片的展示区域小于图片的真实大小，则因在服务端根据业务需要先进行图片压缩，图片压缩后大小与展示一致
+
+你如何理解HTML结构的语义化
+去掉或样式丢失的时候能让页面呈现清晰的结构
+html 本身是没有表现的，我们看到例如<h1>是粗体，字体大小2em，加粗，<strong>是加粗的，不要认为这是html的表现，这些穷死html默认的css样式在起作用，所以去掉或样式丢失的时候能让页面呈现清晰的结构不是语义化的HTML结构的优点，但是浏览器都有默认样式，默认样式的目的也是为了更好的表达html的语义，可以说浏览器的默认样式和语义化的HTML结构是不可分割的
+
+*屏幕阅读器(如果访客有视障)会完全根据你的标记来"读"你的网页
+例如，如果你使用的含语义的标记，屏幕阅读器就会"逐个拼出"你的单词，而不是试着对它完整发音
+*PDA、手机登设备可能无法想普通电脑浏览器一样渲染网页(通常是因为这些设备对CSS支持较弱)
+使用语义标记可以确保这些设别以一种有意义的方式来渲染网页，理想情况下，观看设备的任务是符合设备本身的条件来渲染网页
+	语义标记为设备提供了所需的相关信息，就省去了你自己去考虑所有可能显示情况(包括现有的或者将来新的设备)例如，异步手机可以选择使一段标记了标题的文字以粗体显示，而掌上电脑可能会以比较大的字来显示，无论哪种方式一旦你对文本标记为标题，你就可以确信读取设备将根据其自身的条件来合适地显示页面
+*搜索引擎的爬虫也依赖于标记来确定上下文和各个关键字的权重
+	过去你可能没有考虑搜索引擎的爬虫也是网站的"访客"但现在它们实际上是极其宝贵的用户，如果没有它们，搜索引擎无法索引你的网站，然后一般用户将很难过来访问
+*你的页面是否对爬虫容易理解非常充裕，因为爬虫很大程度上回忽略用于表现的标记，而只注重语义标记
+	因此，如果页面文件的标题被标记，而不是，那么这个页面在搜索结果的位置可能户比较靠后，除了提升易用性外，语义标记有利于正确使用CSS和Javascript,因为其本身提供了许多"钩钩"来应用网页的样式与行为
+	SEO主要还是靠你网站的内容和外部链接的
+*便于团队开发和维护
+	W3C给我们定了一个很好的标志，在团队中大家都遵循这个标准，可以减少很多差异化的东西，方便开发和维护，提高开发效率，甚至实现模块化开发
+
+谈谈以前端角度出发做好SEO需要考虑什么?
+*了解搜索引擎如果抓取页面和如果索引网页
+	你需要知道一些搜索引擎的基本工作原理，各大搜索引擎之间的区别，搜索机器人(SE robot或叫 web crawler)如何工作，搜索引擎如何对搜索结果进行排序等等
+*Meta 标签优化
+	主要包括主题(Title),网站描述(Description),和关键词(Keywords),还有一些其他的隐藏文字比如Author(作者)，Category(目录),Language(编码语种)
+*如何选取关键词并在网页中放置关键词
+	搜索旧的用关键词，关键词分析和选择是SEO最重要的工作之一。首先要给网站确定主关键词(一般在5个上下)，然后针对这些关键词进行优化，包括关键词密度(Density),相关度(Relavancy)突出性(Prominency)等等
+*了解主要的搜索引擎
+	虽然搜索引擎有很多，但是对网站流量器决定作用的就这么几个。比如英文的主要有Google,Yahoo,Bing等，中文的有百度，搜狗，有道等。不同的搜索迎请对页面的抓取和索引、排序的规则不一样，还要了解各搜索门户和搜索引擎之间的关系，比如AOL网页搜索用的是Google的搜索技术,MSN用的是Bing技术
+*主要的互联网目录
+	Open Directory 自身不是搜索引擎，而是一个大型的网站目录，她和搜索引擎的主要区别是网站内容的收集方式不同。目录是人工编辑的，主要收录网站主页；搜索引擎是自动收集的，除了主页外还抓取大量的内容页面
+*按点击收费的搜索引擎
+	搜索引擎也需要生存，随着互联网商务的越来越成熟，收费的搜索引擎也开始大行其道。最典型的有Overture和百度，当然也包括Google的广告项目 Google Adwords。越来越多的人通过搜索引擎的点击广告来定位上也网站，这里面也大有优化和排名的学问，你得学会用最少的广告投入获得最多的点击
+*搜索引擎登陆
+	网站做完了之后，别躺在那里等着客人从天而降，要让别人找到你，最简单的方法就是讲网站的提交(submit)到搜索引擎。如果你的是上也网站，主要的搜索引擎和目录都会要求你付费来获得收录(Yahoo要299美元)但是好消息是(至少到目前为止)最大的搜索引擎Google目前还是免费，而且它主宰者60%以上的搜索市场
+*链接交换和链接广泛度(Link Popularity)
+	网页内容都是以超文本(Hypertext)的方式来互相链接的，网站之间也是如此。除了搜索引擎以外，人们也每天通过不同的网站之间的连接来Surfing("冲浪")。其它网站到你的网站的链接越多，你也就会获得更多的访问量，更重要的是，你的网站外部链接越多，会被搜索引擎认为它的重要性越大，从而给你更高的排名
+*合理的标签使用
+
+Css篇
+1.有哪些方式可以对一个DOM设置它的央视?
+外部样式表，引入一个外部CSS文件
+内部样式表，将css代码放在<head>头部
+内联样式，将css样式直接定义在HTML元素内部
+
+2.CSS有哪些选择器
+派生选择器 
+id选择器
+类选择器
+后代选择器
+群组选择器
+通配符选择器
+兄弟选择器
+属性选择器
+伪类选择器
+子选择器
+
+<! if ie9>
+</ if>
+CSS的优先级
+id 100
+class10
+tag 1
+算出权重，权重越大越优先，同后定义样式者优先有!important优先
+
+3.CSS可以通过哪些属性定义，使得一个DOM元素不显示在浏览器的可视范围内
+最基本的
+设置display属性为none,或者设置visbility为hidden
+技巧性：
+设置宽高为0 设置透明度为0 设置z-index 位置在-1000
+
+4.超链接访问过后hover样式就不出现的问题是什么？如何积极
+答案:被点击访问过的超链接样式不在具有 hover 和active,解决方法是改变CSS属性的排列顺序:L-V-H-A(link,visited,hover,active)
+
+5.什么是Css Hack?ie6,7,8的hack分别是什么
+答案:针对不同的浏览器写不同的Css code的过程，就是CSS hack
+
+#test{
+	width:300px;
+	height:300px;
+	background-color:blue; /*firefox*/
+	background-color:red\9;/*all ie*/
+	background-color:yellow\0 /*ie8*/
+	+background-color:pink /*ie7*/
+	_backgorund-color:orange /*ie6*/
+	}
+:root #test{background-color:puple\9}
+}/*ie9*/
+
+@media all and(min-width:0px){
+	#test{
+	background-color:black\0
+	}
+}/*opera */
+@media screen and(-webkit-min-device-pixel-ratio:0){
+	#test{
+	background-color:gray
+	}
+}/*chrome and safari*/
+
+请用Css写一个简单的幻灯片效果页面
+
+<div class="ani"></div>
+
+.ani{
+	width:380px
+	height:320px;
+	margin:50px auto;
+	overflow:hidden
+	box-shadow:0 0 5px rgba(0,0,0,1);
+	background-size:cover;
+	background-position:center;
+
+	-webkit-animation-name:"loop";
+	-webkit-animation-duration:20s;
+	-webkit-animation-iteration-count:infinite;
+}
+
+@-webkit-keyframes "loops"{
+		0{
+		background:url(http://d.hiphotos.baidu.com/image/w%3D400/sign=c01e6adca964034f0fcdc3069fc27980/e824b899a9014c08e5e38ca4087b02087af4f4d3.jpg) no-repeat;  
+		}
+		25%{
+			background:url(http://b.hiphotos.baidu.com/image/w%3D400/sign=edee1572e9f81a4c2632edc9e72b6029/30adcbef76094b364d72bceba1cc7cd98c109dd0.jpg) no-repeat;
+		}
+		  50% {
+               background:url(http://b.hiphotos.baidu.com/image/w%3D400/sign=937dace2552c11dfded1be2353266255/d8f9d72a6059252d258e7605369b033b5bb5b912.jpg) no-repeat;
+          }
+           75% {
+               background:url(http://g.hiphotos.baidu.com/image/w%3D400/sign=7d37500b8544ebf86d71653fe9f9d736/0df431adcbef76095d61f0972cdda3cc7cd99e4b.jpg) no-repeat;
+           }
+            100% {
+               background:url(http://c.hiphotos.baidu.com/image/w%3D400/sign=cfb239ceb0fb43161a1f7b7a10a54642/3b87e950352ac65ce2e73f76f9f2b21192138ad1.jpg) no-repeat;
+            }
+}
+
+7.行内元素和块级元素具体区别是什么？行内元素的padding和margin可设置吗？
+块级元素(block )特性
+总是独占一行，表现Wie另起一行开始，并且其后的元素也必须另起一行显示；
+windth height padding margin都可以控制
+
+内联元素(inline)特性
+和相邻的内联元素在同一行
+width height padding-top padding-bottom margin-top margin-bottom 不可以改变
+
+还有inline-block 行内块元素
+可设置高宽，不会自动换行
+<input> <img> <textarea> <label> <button>
+
+8.什么是外边距充电？充电的结果是什么
+外边距重叠就是margin-collapse
+在CSS当中，相邻的两个盒子，块级元素之间(可能是兄弟关系也可能是祖先关系)的外边距可以结合成一个单独的外边距。这种合并外边距的方式就做折叠，并且因此锁结合而成的外边距称为折叠外边距
+
+折叠结果遵循下列计算规则
+1.两个相邻的外边距都是正数时，折叠结果是他们两者较大的值
+2.两个响铃的外边距都是负数时，折叠结果是两者决定值的最大值
+3.两个外边距一正一负时，折叠结果是两者的想加的和
+
+rgba()和opacity的透明效果有什么不同
+rgba()和opacity都能实现透明效果，最大的不同是opacity作用于元素，以及元素内所有的内容的透明度
+而rgba()只作用于元素的颜色或其背景色(设计rgba透明的子元素不会继承透明效果！)
+
+10.css中可以让文字在垂直和水平方向上重叠的两个属性是什么？
+垂直方向：line-height
+水平方向: letter-spacing
+
+letter-spacing的妙用有哪些
+可以用来消除inline-block间换行符空格间隙问题
+
+垂直居中一个浮动元素
+已知父元素的高宽
+#div1{
+	background-color:red;
+	width:200px;
+	height:200px;
+	position:absoult:
+	top:50%;
+	left:50%;
+	margin-top:-100px;
+	margin-left:-100px
+}
+未知元素的高宽
+#div{
+	width:200px;
+	height:200px;
+	background:red;
+	margin:auto;
+	positon:absolute;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0
+}
+垂直居中一个<img>
+#container{
+	display:table-cell;
+	text-align:center;
+	vertical-align:middle
+}
+
+12.pxh和em的区别
+px和em都是长度单位，px的值是固定的，em不是固定的，并且em会继承腹肌元素的字体大小
+
+13.描述一个"reset"的CSS文件如何使用它，知道normalize.css吗？你了解他们的不同之处？
+重置样式非常多，凡是一个前端开发人员肯定有一个常用的重置CSS文件并知道使用它们。他们是盲目的在做还是知道为什么这么做？原因是不同的浏览器对一些元素有不同的默认样式，如果你不处理，在不同的浏览器下会存在必要的风向，或者更有喜剧性发生
+你可能用Normalize来代替你的重置样式文件。他它们没有重置所有的样式风格，但仅提供一套合理的默认样式值。技能让众多浏览器达到一致和合理，但又扰乱其他的东西
+在这一方面，无法做每一个复位重置，它也确实有些超过一个重置，它处理你永远不用考虑的怪癖，像HTML的audio元素不一致或line-height不一致
+
+
+Sass、Less是什么？大家为什么使用它们
+	它们是css预处理器，他是CSS上的一种抽象层。它们是一种特殊的语法/语言编译成CSS、
+	例如Less是一种动态样式语言，将CSS赋予了动态语言的特性，如变量，继承，运算，函数，既可以裕兴在客户端(支持IE6+,Webkit,Firefox)在可一在服务器运行(借助Node.js)
+ 为什么要使用它们
+结构清晰，便于扩展
+可以方便地屏蔽浏览器私有语法差异。这个不用多说，封装对浏览器语法差异的重复处理，减少无意义的机械劳动
+可以轻松实现多从继承
+完全兼容CSS代码，可以方便地应用打老项目中。LESS只是在CSS语法做了扩展，所以老的CSS代码也可以与 LESS代码异同编译
+
+
+15.display:none与visibility：hidden的区别是什么？
+display:隐藏对应的元素单不挤占该元素原来的空间
+visibility:隐藏对应的元素并且挤占该元素原来的控件
+	即是，使用CSS display:none属性后，HTML元素(对象)的宽度、高度等各种属性值都将丢失，而使用visibilty:hidden属性后，HTML元素(对象)仅仅是在视觉上看不见(完全透明)，而它锁湛江的控件位置仍然存在
+
+16.知道css有个content属性吗？有什么作用？有什么应用
+知道。css的content属性专门应用子啊before/after伪元素上，用来插入生成内容，最常见的应用是利用伪类清楚浮动
+
+.clearfix:after{
+	content:'.';
+	display:block;
+	height:0;
+	visibility:hidden;
+	clear:both
+}
+.clearfix{
+	*zoom:1
+}
+after微元素通过content在元素后面生成了内容为一个点的会计元素，再利用clear:both清楚浮动
+知道CSS计数器(序列数字自动递增)吗？
+如何通过css content属性实现css计算器
+	css技术器是通过设置counter-reset、counter-increment两个属性、及counter()/counters()一个方法配合after/before伪类实现
+
+
+浏览器兼容问题一，不同浏览器的默认外补丁和内补丁不同
+*{margin:0;padding:0}
+浏览器兼容问题二，块属性标签float后，又有横行的margin情况下，在IE6显示margin比设置的大
+解决方案:在float的标签样式控制中假如display:inline 将其化为行内元素
+
+浏览器兼容问题三,设置较小高度标签(一般小于10px),在IE6,IE7， 高度超出自己设置高度
+解决方案:给超出高度的标签设置overflow:hidden。或者设置行高 line-height小于你设置的高度
+
+备注:这种情况一般出现在我们设置小圆角背景的标签里，出现这个问题的原因是IE8之前的浏览器都会给标签一个最小默认的行高的高度。及时你的标签是空的，这个标签的高度还是会达到默认的行高
+
+浏览器兼容问题四:行内属性标签，设置display:block后采用float布局，又有恒星的margin情况，Ie6间隔bug
+IE6里的间距比超过设置的间距
+在display:block后面假如display:inline;
+display:table
+浏览器兼容问题五:图片默认有间距
+用float
+浏览器兼容问题六：标签最低高度设置min-height不兼容
+{
+min-height:200px height:auto !important；
+height:200px;
+overflow:visible}
+浏览器兼容问题七：透明度的兼容CSS设置
+hack
+
+
+block-level boxes
+一个block-level element('display'属性值为'block','list-item'或是 'table')会生成一个block-level box 块级元素 这样的盒子会参与到BFC
+block formatting context
+
+containing block
+一般来说 盒子本身就为其子孙建立了containing block 用来计算内部盒子的位置、大小，而对内部的盒子，具体采用哪个containing block 来计算，需要分情况来讨论
+
+若此元素为inline元素，则containing block 为能够包含这个元素生成的第一个和最后一个inline  box 的padding box 除margin,border外的区域的最小的矩形，否则则由祖先元素的padding box 构成
+根元素所在的containing block 被称为 initial containing block 在我们常用的浏览器环境下，指的是原点与canvas重合，大小和viewport相同的矩形
+否则则由这个祖先元素的padding box 构成
+根元素所在的containing block 被称为inital containing block 在我们常用的浏览器环境下，指的是原点与canvas重合，大小与viewport相同的矩形
+
+对于position为static 或 relative元素，其containing block 为祖先元素中最近的block container box 的contain box
+
+对于position为position为fixed元素 containing block 由viewport决定
+
+对于 position absolute 则显示找最近的position属性费static 然后判断，如果都找不到则为initial containing block
+
+position跟display、margin collapse、overflow、float这些特性相互叠加后会怎么样？
+dispalay 为none 不会发生
+position absoult 和fixed脱离文档流 float 无效  collaspse无效
+
+static 或者relavite 
+内联元素浮动会变为块级元素
+块级元素  margincollaspe不会生效 如果没有浮动 则会生效
+如果在父元素设置overflow：hidden 可以清楚浮动带来的影响 
+
+
+position static 
+
+ 解释下下浮动和它的工作原理？清除浮动的技巧
+
+浮动元素脱离文档刘，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留
+浮动元素一起的问题是 父元素高度无法撑开，与浮动元素统计的非浮动元素会跟随，影响页面显示结构
+给包含浮动元素的父标签添加css属性 overflow:auto; zoom:1; zoom:1用于兼容IE6。
+伪元素清楚法{
+	.clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix{display: inline-block;} /* for IE/Mac */
+}
+
+进程与线程的区别
+一个程序至少有一个进程，一个进程至少有一个线程。
+线程的划分尺寸小于进程，使得多线程程序的并发性高。
+另外，进程在执行任务中拥有独立的内存单元，二多个线程共享内存，机打提高程序执行效率
+线程在执行过程中与进程还是有区别的。每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制
+从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调读和管理以及资源分配。这就是进程和线程的区别
+你用过媒体查询或针对移动端布局/css吗
+响应式布局框架Bootstrap
+
+@media screen(min-width:400px) and (max-width:960px)
+@media handheld(min-width:20em),screen and(min-width:400px)
+媒体查询
+XHTML和CSS如何注释
+XHTML :<!--注释内容-->
+css :/*注释内容*/
+ JavaScript原型，原型链 ? 有什么特点？
+j即是每个javascript 对象都有一个_proto_属性，如果我们访问属性在对象自身找不到 就会在_proto_属性指向的找另一个prototype 一直找到Object内建对象为止，这就是原型链
+特点:
+	
+	Javascript 对象是通过引用来传递的我们创建的每个新对象实例中并没有一个属于自己的原型副本，只有内建的，于是我们
+	修改相关的原型，与之相关的继承的也会执行对应的改变
+
+jascript变量提升机制是说Javascrip执行的时候，会把所有的变量声明提升到当前作用域 javasript没有块级作用域，函数是javascript中唯一有自身作用域的结构
+声明、定义与初始化
+声明宣称一个名字的存在，定义则为这个名字分配存储空间，而初始化则是为名字分配的存储空间赋值
+
+//函数声明
+ function sayHi(){
+ 	alert("Hi!");
+             
+}    
+//函数表达式
+ var func = function(agr1,arg2){alert("Hi!");
+  }    
+  函数表达式不会被提升原因是提升的是变量名本身，函数体还没有进行赋值
+
+ 名字解析顺序
+
+ javascript中一个名字(name)以四种方式进入作用域(scope),名字声明的其优先级顺序如下
+ 1.语言内置 this arguments
+ 2.形参  函数的形参
+ 3.函数声明 function foo(){}
+ 4.变量声明 var bar
+ 
+ 如果形式参数中有多个同名变量，那么最后一个同名参数会覆盖其他同名参数，即使最后一个同名参数并没有定义。
+  99%的网站都需要被重构是那本书上写的？
+  《网站重构》
+  4、 jQuery和Zepto的区别？各自的使用场景？
+jQuery主要用于pc端，当然有对应的jQuerymobile用于移动端，zepto比jQuery更加小巧，主要用于移动端
+
+jquer mobile相对于zepto功能强大，但是体积也很庞大，zepto非常的轻量
+7、Zepto的点透问题如何解决？
+点透主要是由于两个div重合，例如：一个div调用show()，一个div调用hide()；这个时候当点击上面的div的时候就会影响到下面的那个div；
+
+解决办法主要有2种：
+
+1.github上有一个叫做fastclick的库，它也能规避移动设备上click事件的延迟响应，https://github.com/ftlabs/fastclick
+
+将它用script标签引入页面（该库支持AMD，于是你也可以按照AMD规范，用诸如require.js的模块加载器引入），并且在dom ready时初始化在body上，
+
+2.根据分析，如果不引入其它类库，也不想自己按照上述fastclcik的思路再开发一套东西，需要1.一个优先于下面的“divClickUnder”捕获的事件；2.并且通过这个事件阻止掉默认行为（下面的“divClickUnder”对click事件的捕获，在ios的safari，click的捕获被认为和滚屏、点击输入框弹起键盘等一样，是一种浏览器默认行为，即可以被event.preventDefault()阻止的行为）。
+1、移动端最小触控区域是多大？
+移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？（click 有 300ms 延迟,为了实现safari的双击事件的设计，浏览器要知道你是不是要双击操作。）
+JQuery一个对象可以同时绑定多个事件，这是如何实现的？
+on bind
+可以同时绑定多个事件，低层实现原理是使用addEventListner与attachEvent兼容处理做事件注册
+6、什么是“前端路由”?什么时候适合使用“前端路由”? “前端路由”有哪些优点和缺点?
+ 
+前端路由就是在不进行后端请求的情况下对页面进行跳转
+
+常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？
+* 使用率较高的框架有jQuery、YUI、Prototype、Dojo、Ext.js、Mootools等。尤其是jQuery，超过91%。 轻量级框架有Modernizr、underscore.js、backbone.js、Raphael.js等。 （理解这些框架的功能、性能、设计原理） * Sublime Text 、Eclipse、Notepad、Firebug、HttpWatch、Yslow。 * 城市选择插件，汽车型号选择插件、幻灯片插件。弹出层。（写过开源程序，加载器，js引擎更好）
+IE浏览
+
+  事件不同之处：
+
+    1.触发事件的元素被认为是目标（target）。而在 IE 中，目标包含在 event 对象的 srcElement 属性；
+
+    2.获取字符代码、如果按键代表一个字符（shift、ctrl、alt除外），IE 的 keyCode 会返回字符代码（Unicode），DOM 中按键的代码和字符是分离的，
+    要获取字符代码，需要使用 charCode 属性；
+
+    3.阻止某个事件的默认行为，IE 中阻止某个事件的默认行为，必须将 returnValue 属性设置为 false，Mozilla 中，需要调用 preventDefault() 方法；
+
+    4.停止事件冒泡，IE 中阻止事件进一步冒泡，需要设置 cancelBubble 为 true，Mozzilla 中，需要调用 stopPropagation()；
+
+
+opacity:0.8;
+filter:alpha(opacity=80);
+标签：
+
+WEB应用从服务器主动推送Data到客户端有那些方式？
+Javascript数据推送
+Commet：基于HTTP长连接的服务器推送技术
+基于WebSocket的推送方案
+SSE（Server-Send Event）：服务器推送数据新方式
+页面重构怎么操作？
+
+网站重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。
+也就是说是在不改变UI的情况下，对网站进行优化，在扩展的同时保持一致的UI。
+
+你常用的开发工具是什么，为什么？
+sublime text3 轻量级多插件支持
+
+如何设计突发大规模并发架构?
+第一点,为了尽可能提高应用的io吞吐量.则需要我们把所有耗时的io操作尽可能的优化,比如全局使用很少更改的一些配置,则可以采用nosql来全局共享(注意,这里的全局是指服务器集群.如果涉及到了大规模,肯定是多服务器的).在其次可以增加服务器缓存.比如2秒钟从上一条的服务器读取配置,存到服务器级别.以提高效率.还有线程缓存.如果业务复杂可能对一个请求需要查询多次数据,不变的,老规矩,放到线程缓存.基本也就差不多了.
+第二点,因为应用不同,要考虑容错率.这个部分优化,可以考虑分离业务,把必须要数据安全的业务逻辑提取出来,队列执行或者特殊处理.
+
+如何编写高性能的Javascript？
+
+Doctype作用?严格模式和混合模式如何区分
+<!DOCTYPE>告诉浏览器以何种模式解析渲染文档
+严格模式 是该浏览器的最高标准运行
+在混杂模式中，页面以宽松的向后兼容的方式显示
+DOCTYPE不存在回忆混杂模式呈现 
+你知道多少种Doctype文档类型
+该标签可声明DTD类型，分别表示严格版本、过度版本以及基于框架的HTML文档 
+
+HTML与XHTML 二者有什么区别
+1.所有的标记都必须要有结束标记
+2.所有的标签的元素和属性的名字都必须使用小写
+3.所有的XML标记都必须合理嵌套
+4.所有的属性必须用""括起来
+5.把所有的<和&特殊符号用编码表示
+6.给所有属性赋一个值
+7.不要在注释内容中使"--"
+8.图片必须有说明文字
+
+IE8以下的版本的浏览器中的盒模型有什么不同
+IE8以下浏览器的盒模型中定义的元素的狂傲不包括内边距和边框
+
+DOM操作--怎么样添加、溢出、移动、复制、创建和查找节点
+1创建新节点
+	createDocumentFragment()
+	createElement()
+	createTextNode()
+2.添加、移除、替换、插入
+	appendChild()
+	removeChild()
+	replaceChild()
+	insertBefore()//在已有的子节点前插入
+3.查找
+	getElementsByTagName()
+	getElementsByClassName()
+	getElementBuId()
+
+WEB应用从服务器主动推送Data到客户端有那些方式？
+html5 websoket
+    WebSocket通过Flash
+    XHR长时间连接
+    XHR Multipart Streaming
+    不可见的Iframe
+    <script>标签的长时间连接(可跨域)
+
+javascript对象的几种创建方式
+1，工厂模式
+2，构造函数模式
+3，原型模式
+4，混合构造函数和原型模式
+5，动态原型模式
+6，寄生构造函数模式
+7，稳妥构造函数模式
+
+javascript继承的6种方法
+1，原型链继承
+2，借用构造函数继承
+3，组合继承(原型+借用构造)
+4，原型式继承
+5，寄生式继承
+6，寄生组合式继承
+
+异步加载和延迟加载
+
+1.异步加载的方案： 动态插入script标签
+2.通过ajax去获取js代码，然后通过eval执行
+3.script标签上添加defer或者async属性
+4.创建并插入iframe，让它异步执行js
+5.延迟加载：有些 js 代码并不是页面初始化的时候就立刻需要的，而稍后的某些情况才需要的。
+
+ajax过程
+
+(1)创建XMLHttpRequest对象,也就是创建一个异步调用对象.
+
+(2)创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.
+
+(3)设置响应HTTP请求状态变化的函数.
+
+(4)发送HTTP请求.
+
+(5)获取异步调用返回的数据.
+
+(6)使用JavaScript和DOM实现局部刷新.
+
+前端安全问题？
+
+    （XSS，sql注入，CSRF）
+CSRF：是跨站请求伪造，很明显根据刚刚的解释，他的核心也就是请求伪造，通过伪造身份提交POST和GET请求来进行跨域的攻击。
+
+**完成CSRF需要两个步骤：**
+
+1.登陆受信任的网站A，在本地生成COOKIE
+
+2.在不登出A的情况下，或者本地COOKIE没有过期的情况下，访问危险网站B。
+请解释一下 JavaScript 的同源策略。
+
+概念:同源策略是客户端脚本（尤其是Javascript）的重要的安全度量标准。它最早出自Netscape Navigator2.0，其目的是防止某个文档或脚本从多个不同源装载。
+
+这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。
+指一段脚本只能读取来自同一来源的窗口和文档的属性。
+
+为什么要有同源限制？
+
+我们举例说明：比如一个黑客程序，他利用Iframe把真正的银行登录页面嵌到他的页面上，当你使用真实的用户名，密码登录时，他的页面就可以通过Javascript读取到你的表单中input中的内容，这样用户名，密码就轻松到手了。
+
+
+cache-control
+
+网页的缓存是由HTTP消息头中的“Cache-control”来控制的，常见的取值有private、no-cache、max-age、must-revalidate等，默认为private。
+
+Expires 头部字段提供一个日期和时间，响应在该日期和时间后被认为失效。允许客户端在这个时间之前不去检查（发请求），等同max-age的效果。但是如果同时存在，则被Cache-Control的max-age覆盖。
+
+Expires = "Expires" ":" HTTP-date
+例如
+
+Expires: Thu, 01 Dec 1994 16:00:00 GMT （必须是GMT格式）
+如果把它设置为-1，则表示立即过期
+
+Expires和max-age都可以用来指定文档的过期时间，但是二者有一些细微差别
+
+1.Expires在HTTP/1.0中已经定义，Cache-Control:max-age在HTTP/1.1中才有定义，为了向下兼容，仅使用max-age不够；
+2.Expires指定一个绝对的过期时间(GMT格式),这么做会导致至少2个问题：1)客户端和服务器时间不同步导致Expires的配置出现问题。 2）很容易在配置后忘记具体的过期时间，导致过期来临出现浪涌现象；
+
+3.max-age 指定的是从文档被访问后的存活时间，这个时间是个相对值(比如:3600s),相对的是文档第一次被请求时服务器记录的Request_time(请求时间)
+
+4.Expires指定的时间可以是相对文件的最后访问时间(Atime)或者修改时间(MTime),而max-age相对对的是文档的请求时间(Atime)
+
+如果值为no-cache,那么每次都会访问服务器。如果值为max-age,则在过期之前不会重复访问服务器。
+
+在离线状态时，操作window.applicationCache进行需求实现。
+
+浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
+在线的情况下，浏览器发现html头部有manifest属性，它会请求manifest文件，如果是第一次访问app，那么浏览器就会根据manifest文件的内容下载相应的资源并且进行离线存储。如果已经访问过app并且资源已经离线存储了，那么浏览器就会使用离线的资源加载页面，然后浏览器会对比新的manifest文件与旧的manifest文件，如果文件没有发生改变，就不做任何操作，如果文件改变了，那么就会重新下载文件中的资源并进行离线存储。
+
+离线的情况下，浏览器就直接使用离线存储的资源。
+
+页面可见性（Page Visibility API） 可以有哪些用途？
+通过 visibilityState 的值检测页面当前是否可见，以及打开网页的时间等;
+在页面被切换到其他后台进程的时候，自动暂停音乐或视频的播放；
+网页验证码是干嘛的，是为了解决什么安全问题。
+ 
+区分用户是计算机还是人的公共全自动程序。可以防止恶意破解密码、刷票、论坛灌水；
+有效防止黑客对某一个特定注册用户用特定程序暴力破解方式进行不断的登陆尝试。
+什么是Cookie 隔离？（或者说：请求资源的时候不要让它带cookie怎么做）
+ 
+如果静态文件都放在主域名下，那静态文件请求的时候都带有的cookie的数据提交给server的，非常浪费流量，所以不如隔离开。
+ 
+因为cookie有域的限制，因此不能跨域提交请求，故使用非主要域名的时候，请求头中就不会带有cookie数据，这样可以降低请求头的大小，降低请求时间，从而达到降低整体请求延时的目的。
+ 
+同时这种方式不会将cookie传入Web Server，也减少了Web Server对cookie的处理分析环节，提高了webserver的http请求的解析速度。
+
+6、Javascript中callee和caller的作用？
+
+caller是返回一个对函数的引用，该函数调用了当前函数；
+
+callee是返回正在被执行的function函数，也就是所指定的function对象的正文。
+
+你所了解到的Web攻击技术
+
+（1）XSS（Cross-Site Scripting，跨站脚本攻击）：指通过存在安全漏洞的Web网站注册用户的浏览器内运行非法的HTML标签或者JavaScript进行的一种攻击。
+（2）SQL注入攻击
+（3）CSRF（Cross-Site Request Forgeries，跨站点请求伪造）：指攻击者通过设置好的陷阱，强制对已完成的认证用户进行非预期的个人信息或设定信息等某些状态更新。
+Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]
+   Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]
+  Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等
+  Presto内核：Opera7及以上。      [Opera内核原为：Presto，现为：Blink;]
+  Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]

@@ -1,0 +1,21 @@
+module.exports={
+	"extends":["eslint:recommended"]
+	"rules":{
+		"no-console":["error",{
+			"allow":["wran","error","info"]
+		}]
+	},
+	"paser":"bable-eslint",
+	"parserOptions":{
+		"ecmaVersion":6,
+		"sourceType":"script"
+	},
+	"globals":{
+		"window":true
+	},
+	"env":{
+		"browser":false
+		"node":true,
+		"es6":true,
+		"mocha":true
+	}
